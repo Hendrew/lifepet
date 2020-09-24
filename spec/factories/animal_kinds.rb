@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :animal_type do
-    kind { Faker::Creature::Animal.name }
+  factory :animal_kind do
+    kind { Faker::Name.name }
   end
 end
