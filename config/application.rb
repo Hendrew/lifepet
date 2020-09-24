@@ -32,6 +32,17 @@ module Lifepet
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: false
+
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+    end
+
     config.time_zone = 'Brasilia'
 
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
