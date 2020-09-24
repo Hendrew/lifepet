@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      animal_kind:
+        one: Tipo de Animal
+        other: Tipos de Animais
+    attributes:
+      animal_kind:
+        kind: Tipo

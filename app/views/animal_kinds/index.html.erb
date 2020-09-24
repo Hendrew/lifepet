@@ -1,0 +1,50 @@
+<% provide :page_title, 'Tipos de Animais' %>
+
+<div class="container">
+  <div class="pt-5 pb-5 border-bottom">
+    <div class="row text-center">
+      <div class="col-md-3 text-md-left">
+        <h1 class="h2 mb-0">Tipos de Animais</h1>
+      </div>
+      <div class="col-md-9 text-md-right mt-3 mt-md-0">
+        <%= link_to 'Novo', new_animal_kind_path, class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-5 pb-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered mb-0">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @animal_kinds.each do |animal_kind| %>
+              <tr>
+                <td><%= animal_kind.kind %></td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= link_to 'Editar', edit_animal_kind_path(animal_kind), class: 'btn btn-warning' %>
+                    <%= link_to 'Excluir', animal_kind_path(animal_kind), method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+
+              <% if @animal_kinds.length == 0 %>
+              <tr>
+                <td colspan="2">Nenhum tipo de animal encontrado</td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

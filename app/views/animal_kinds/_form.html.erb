@@ -1,0 +1,46 @@
+<% provide :page_title, "#{page} Tipo de Animal" %>
+
+<div class="container">
+  <div class="page_header pt-5 pb-5 border-bottom">
+    <div class="row text-center">
+      <div class="col-md-4 text-md-left">
+        <h1 class="h2 mb-0"><%= page %> Tipo de Animal</h1>
+      </div>
+
+      <div class="col-md-8 text-md-right mt-3 mt-md-0">
+        <%= link_to 'Voltar', animal_kinds_path, class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="page_content">
+    <% if @animal_kind.errors.any? %>
+    <div class="alert alert-danger mt-5">
+      <h3 class="title h4 font-weight-bold">
+        <%= pluralize(@animal_kind.errors.count, 'erro', 'erros') %>
+        <%= @animal_kind.errors.count > 1 ? 'proibiram' : 'proibiu' %> este tipo de animal de ser salvo:
+      </h3>
+
+      <ul class="mb-0">
+        <% @animal_kind.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="card">
+      <div class="card-body">
+        <%= form_with model: [@animal_kind], local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :kind, class: 'form-label' %> <small class="text-danger">*</small>
+            <%= f.text_field :kind, autofocus: true, autocomplete: 'kind', class: 'form-control' %>
+          </div>
+
+          <%= f.submit nil, class: 'btn btn-primary' %>
+          <%= link_to 'Cancelar', animal_kinds_path, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
