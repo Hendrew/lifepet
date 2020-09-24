@@ -1,0 +1,26 @@
+body {
+  background-color: #343a40;
+
+  main {
+    background-color: #FFFFFF;
+  }
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+table {
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.alert_top {
+  border-radius: 0;
+  margin-bottom: 0;
+}
