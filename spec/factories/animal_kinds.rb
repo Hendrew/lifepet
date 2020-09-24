@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :animal_type do
-    kind { "" }
-    slug { "MyString" }
+    kind { Faker::Creature::Animal.name }
   end
 end
