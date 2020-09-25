@@ -1,4 +1,5 @@
 document.addEventListener("turbolinks:load", function () {
+  // New and Edit
   const adoptionStatus = document.querySelector("#animal_adoption_status")
   const adopterNameWrap = document.querySelector("#animal_adopter_name_wrap")
   const adopterName = document.querySelector("#animal_adopter_name")
@@ -19,6 +20,16 @@ document.addEventListener("turbolinks:load", function () {
         adopterNameWrap.classList.remove("show_animal_adopter_name_wrap")
         adopterNameWrap.classList.add("hide_animal_adopter_name_wrap")
       }
+    }
+  }
+
+  // Sort
+  let animalSortForm = document.querySelector("#animal_sort_form")
+  let animalSort = document.querySelector("#animal_sort")
+
+  if (animalSort != undefined) {
+    animalSort.onchange = function () {
+      animalSortForm.submit()
     }
   }
 })

@@ -1,0 +1,12 @@
+<div class="row justify-content-end mt-5">
+    <div class="col-md-3">
+      <%= form_with url: animals_path, method: :get, local: true, id: 'animal_sort_form' do %>
+        <%= select_tag(:sort,
+          options_for_select([
+            ['Todos', 'all'],
+            ['Aguardando Adoção', 'waiting'],
+            ['Adotados', 'adopted']
+          ], params[:sort]), { id: 'animal_sort', class: 'form-select' }) %>
+      <% end %>
+    </div>
+  </div>

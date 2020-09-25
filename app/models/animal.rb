@@ -10,6 +10,14 @@ class Animal < ApplicationRecord
   validates :adoption_status, inclusion: [true, false]
   validate :verify_adoption_status
 
+  scope :animal_sort, -> (sort_params) {
+    if sort_params == 'waiting'
+      where(adoption_status: false)
+    elsif sort_params == 'adopted'
+      where(adoption_status: true)
+    end
+  }
+
   def date_of_birth_br
     self.date_of_birth.to_s.split('-').reverse().join('/')
   end

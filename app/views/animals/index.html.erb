@@ -12,6 +12,8 @@
     </div>
   </div>
 
+  <%= render 'sort' %>
+
   <div class="pt-5 pb-5">
     <div class="card">
       <div class="card-body">
@@ -49,7 +51,7 @@
 
               <% if @animals.length == 0 %>
               <tr>
-                <td colspan="3">Nenhum animal encontrado</td>
+                <td colspan="4">Nenhum animal encontrado</td>
               </tr>
               <% end %>
             </tbody>

@@ -23,6 +23,8 @@ module ApplicationHelper
 
     if res == 0
       'Menos de um ano'
+    elsif res == 1
+      '1 ano'
     else
       "#{res} anos"
     end
