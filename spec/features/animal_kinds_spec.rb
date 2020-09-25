@@ -83,7 +83,7 @@ RSpec.feature 'AnimalKinds', type: :feature do
       visit new_animal_kind_path
     end
 
-    scenario 'with valid inputs', js: true do
+    scenario 'with valid inputs' do
       within('form') do
         fill_in 'Tipo',	with: animal_kind.kind
       end

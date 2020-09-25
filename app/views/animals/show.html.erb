@@ -19,7 +19,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-body">
-                <%= image_tag(@animal.image_url, class: 'img-fluid') if @animal.image.present? %>
+                <%= image_tag(@animal.image_url, class: 'img-fluid', id: 'animal_photo') if @animal.image.present? %>
               </div>
             </div>
           </div>

@@ -30,7 +30,7 @@
             <tbody>
               <% @animals.each do |animal| %>
               <tr>
-                <td><%= image_tag(animal.image_url('medium'), class: 'animal_photo_list') if animal.image.present? %></td>
+                <td><%= image_tag(animal.image_url('medium'), class: 'animal_photo_list', id: "animal_photo_list_#{animal.id}") if animal.image.present? %></td>
                 <td><%= animal.name %></td>
                 <td>
                 <% if animal.adoption_status == true %>

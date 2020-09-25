@@ -34,3 +34,5 @@ yarn-debug.log*
 
 /config/database.yml
 /db/schema.rb
+
+/public/uploads
