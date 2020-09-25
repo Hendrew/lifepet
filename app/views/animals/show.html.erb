@@ -1,0 +1,65 @@
+<% provide :page_title, 'Animais' %>
+
+<div class="container">
+  <div class="pt-5 pb-5 border-bottom">
+    <div class="row text-center">
+      <div class="col-md-3 text-md-left">
+        <h1 class="h2 mb-0">Animal</h1>
+      </div>
+      <div class="col-md-9 text-md-right mt-3 mt-md-0">
+        <%= link_to 'Voltar', animals_path, class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-5 pb-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <%= image_tag(@animal.image_url, class: 'img-fluid') if @animal.image.present? %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td class="font-weight-bold">Tipo de animal</td>
+                    <td><%= @animal.animal_kind.kind %></td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold">Nome</td>
+                    <td><%= @animal.name %></td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold">Nascimento</td>
+                    <td><%= l @animal.date_of_birth, format: :long %></td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold">Idade</td>
+                    <td><%= get_age(@animal.date_of_birth) %></td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold">Status</td>
+                    <td>
+                      <% if @animal.adoption_status === true %>
+                        Adotado por <%= @animal.adopter_name %>
+                      <% else %>
+                        Aguardando adoção
+                      <% end %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

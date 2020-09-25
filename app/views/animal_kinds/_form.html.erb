@@ -13,9 +13,9 @@
     </div>
   </div>
 
-  <div class="page_content">
+  <div class="page_content pt-5 pb-5">
     <% if @animal_kind.errors.any? %>
-    <div class="alert alert-danger mt-5">
+    <div class="alert alert-danger">
       <h3 class="title h4 font-weight-bold">
         <%= pluralize(@animal_kind.errors.count, 'erro', 'erros') %>
         <%= @animal_kind.errors.count > 1 ? 'proibiram' : 'proibiu' %> este tipo de animal de ser salvo:

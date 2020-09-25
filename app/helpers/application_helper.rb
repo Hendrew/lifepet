@@ -15,4 +15,16 @@ module ApplicationHelper
       'alert-danger'
     end
   end
+
+  def get_age(birth)
+    today = Date.current
+
+    res = today.year - birth.year
+
+    if res == 0
+      'Menos de um ano'
+    else
+      "#{res} anos"
+    end
+  end
 end

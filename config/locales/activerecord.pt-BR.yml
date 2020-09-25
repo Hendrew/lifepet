@@ -4,6 +4,18 @@ pt-BR:
       animal_kind:
         one: Tipo de Animal
         other: Tipos de Animais
+      animal:
+        one: Animal
+        other: Animais
     attributes:
       animal_kind:
         kind: Tipo
+      animal:
+        name: Nome
+        image: Imagem
+        date_of_birth: Data de nascimento
+        adoption_status: Status de adoção
+        adopter_name: Nome do adotante
+        animal_kind: Tipo de animal
+        animal_kind_id: Tipo de animal
+

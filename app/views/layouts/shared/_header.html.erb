@@ -7,15 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <%= link_to 'Home', root_path, alt: 'home', class: 'nav-link' %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             Animais
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to 'Tipos', animal_kinds_path, class: 'dropdown-item' %></li>
-            <li><a class="dropdown-item" href="#">Listar</a></li>
+            <li><%= link_to 'Tipos', animal_kinds_path, alt: 'tipos', class: 'dropdown-item' %></li>
+            <li><%= link_to 'Listar', animals_path, alt: 'listar animais', class: 'dropdown-item' %></li>
           </ul>
         </li>
       </ul>

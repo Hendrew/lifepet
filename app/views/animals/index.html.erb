@@ -1,0 +1,61 @@
+<% provide :page_title, 'Animais' %>
+
+<div class="container">
+  <div class="pt-5 pb-5 border-bottom">
+    <div class="row text-center">
+      <div class="col-md-3 text-md-left">
+        <h1 class="h2 mb-0">Animais</h1>
+      </div>
+      <div class="col-md-9 text-md-right mt-3 mt-md-0">
+        <%= link_to 'Novo', new_animal_path, class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-5 pb-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered mb-0">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Status de Adoção</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @animals.each do |animal| %>
+              <tr>
+                <td><%= image_tag(animal.image_url('medium'), class: 'animal_photo_list') if animal.image.present? %></td>
+                <td><%= animal.name %></td>
+                <td>
+                <% if animal.adoption_status == true %>
+                  Adotado
+                <% else %>
+                  Aguardando
+                <% end %>
+                </td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= link_to 'Visualizar', animal_path(animal), class: 'btn btn-info' %>
+                    <%= link_to 'Editar', edit_animal_path(animal), class: 'btn btn-warning' %>
+                    <%= link_to 'Excluir', animal_path(animal), method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+
+              <% if @animals.length == 0 %>
+              <tr>
+                <td colspan="3">Nenhum animal encontrado</td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

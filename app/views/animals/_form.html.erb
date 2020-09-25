@@ -1,0 +1,81 @@
+<% provide :page_title, "#{page} Animal" %>
+
+<div class="container">
+  <div class="page_header pt-5 pb-5 border-bottom">
+    <div class="row text-center">
+      <div class="col-md-4 text-md-left">
+        <h1 class="h2 mb-0"><%= page %> Animal</h1>
+      </div>
+
+      <div class="col-md-8 text-md-right mt-3 mt-md-0">
+        <%= link_to 'Voltar', animals_path, class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="page_content pt-5 pb-5">
+    <% if @animal.errors.any? %>
+    <div class="alert alert-danger">
+      <h3 class="title h4 font-weight-bold">
+        <%= pluralize(@animal.errors.count, 'erro', 'erros') %>
+        <%= @animal.errors.count > 1 ? 'proibiram' : 'proibiu' %> este animal de ser salvo:
+      </h3>
+
+      <ul class="mb-0">
+        <% @animal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="card">
+      <div class="card-body">
+        <%= form_with model: [@animal], local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :animal_kind_id, class: 'form-label' %> <small class="text-danger">*</small>
+            <%= f.select(:animal_kind_id, @animal_kinds, { include_blank: 'Escolher' }, class: 'form-select') %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :name, class: 'form-label' %> <small class="text-danger">*</small>
+            <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :image, class: 'form-label' %>
+            <% if @animal.new_record? %> <small class="text-danger">*</small> <% end %>
+            <%= f.file_field :image, class: 'd-block' %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :date_of_birth, class: 'form-label' %> <small class="text-danger">*</small>
+            <% if @animal.new_record? %>
+            <%= f.text_field :date_of_birth, autocomplete: 'date_of_birth', class: 'form-control' %>
+            <% else %>
+              <%= f.text_field :date_of_birth, autocomplete: 'date_of_birth', class: 'form-control', value: @animal.date_of_birth_br %>
+            <% end %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :adoption_status, class: 'form-label' %>
+            <%= f.select(:adoption_status, [['Aguardando', false], ['Adotado', true]], {}, class: 'form-select') %>
+          </div>
+
+          <% if @animal.adoption_status == true %>
+          <div class="mb-3 show_animal_adopter_name_wrap" id="animal_adopter_name_wrap">
+          <% else %>
+          <div class="mb-3" id="animal_adopter_name_wrap">
+          <% end %>
+            <%= f.label :adopter_name, class: 'form-label' %> <small class="text-danger">*</small>
+            <%= f.text_field :adopter_name, autocomplete: 'adopter_name', class: 'form-control' %>
+          </div>
+
+          <%= f.submit nil, class: 'btn btn-primary' %>
+          <%= link_to 'Cancelar', animals_path, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
