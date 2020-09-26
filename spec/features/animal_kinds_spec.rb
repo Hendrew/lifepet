@@ -153,4 +153,19 @@ RSpec.feature 'AnimalKinds', type: :feature do
       expect(page).to have_content  'Tipo não pode ficar em branco'
     end
   end
+
+  context 'destroy the animal kind when there is data related to it' do
+    let!(:animal_kind) { create(:animal_kind) }
+    let!(:animal) { create(:animal, animal_kind: animal_kind) }
+
+    before do
+      visit animal_kinds_path
+    end
+
+    scenario 'exclusion is prohibited', js: true do
+      click_on 'Excluir', match: :first
+      page.driver.browser.switch_to.alert.accept
+      expect(page).to have_content 'Esse tipo de animal não pode ser excluído pois há dados relacionados a ele.'
+    end
+  end
 end

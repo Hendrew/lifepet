@@ -32,6 +32,13 @@ class AnimalKindsController < ApplicationController
   end
 
   def destroy
+    animal_count = Animal.where(animal_kind: @animal_kind).count
+
+    if animal_count > 0
+      flash[:error] = 'Esse tipo de animal não pode ser excluído pois há dados relacionados a ele.'
+      return redirect_to animal_kinds_path
+    end
+
     if @animal_kind.destroy
       flash[:success] = 'Tipo de animal excluído com sucesso.'
       redirect_to animal_kinds_path

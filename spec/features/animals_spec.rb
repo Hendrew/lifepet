@@ -134,7 +134,7 @@ RSpec.feature 'Animals', type: :feature do
         find('#animal_animal_kind_id').find(:xpath, 'option[2]').select_option
         fill_in 'Nome',	with: animal.name
         attach_file('Imagem', Rails.root.join('spec/support/files/dog.jpg'))
-        fill_in 'Data de nascimento',	with: animal.date_of_birth
+        fill_in 'Data de nascimento',	with: '10/10/2018'
       end
       click_on 'Criar Animal'
       expect(page).to have_content 'Animal cadastrado com sucesso.'
@@ -145,7 +145,7 @@ RSpec.feature 'Animals', type: :feature do
         find('#animal_animal_kind_id').find(:xpath, 'option[2]').select_option
         fill_in 'Nome',	with: animal.name
         attach_file('Imagem', Rails.root.join('spec/support/files/dog.jpg'))
-        fill_in 'Data de nascimento',	with: animal.date_of_birth
+        fill_in 'Data de nascimento',	with: '10/10/2018'
         find('#animal_adoption_status').find(:xpath, 'option[2]').select_option
         fill_in 'Nome do adotante',	with: 'John Doe'
       end
