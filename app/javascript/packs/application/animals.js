@@ -32,4 +32,10 @@ document.addEventListener("turbolinks:load", function () {
       animalSortForm.submit()
     }
   }
+
+  // Masker
+  let animalDateOfBirth = document.querySelector("#animal_date_of_birth")
+  if (animalDateOfBirth != undefined) {
+    VMasker(animalDateOfBirth).maskPattern("99/99/9999")
+  }
 })

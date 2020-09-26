@@ -3,7 +3,7 @@ class AnimalsController < ApplicationController
   before_action :set_animal_kinds, only: [:new, :create, :edit, :update]
 
   def index
-    @animals = Animal.animal_sort(sort_params).order(created_at: :desc)
+    @animals = Animal.animal_sort(sort_params).order(id: :desc)
   end
 
   def new

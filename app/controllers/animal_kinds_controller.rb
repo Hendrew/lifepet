@@ -2,7 +2,7 @@ class AnimalKindsController < ApplicationController
   before_action :set_animal_kind, only: [:edit, :update, :destroy, :status]
 
   def index
-    @animal_kinds = AnimalKind.order(created_at: :desc)
+    @animal_kinds = AnimalKind.order(id: :desc)
   end
 
   def new
