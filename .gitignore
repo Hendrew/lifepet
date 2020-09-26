@@ -36,3 +36,4 @@ yarn-debug.log*
 /db/schema.rb
 
 /public/uploads
+.env
